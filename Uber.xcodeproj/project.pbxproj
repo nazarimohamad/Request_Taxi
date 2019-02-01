@@ -12,8 +12,6 @@
 		126D314C2204E4810036F9A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 126D314A2204E4810036F9A8 /* Main.storyboard */; };
 		126D314E2204E4860036F9A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 126D314D2204E4860036F9A8 /* Assets.xcassets */; };
 		126D31512204E4860036F9A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 126D314F2204E4860036F9A8 /* LaunchScreen.storyboard */; };
-		126D315C2204E4860036F9A8 /* UberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126D315B2204E4860036F9A8 /* UberTests.swift */; };
-		126D31672204E4860036F9A8 /* UberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126D31662204E4860036F9A8 /* UberUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,11 +40,7 @@
 		126D31502204E4860036F9A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		126D31522204E4860036F9A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		126D31572204E4860036F9A8 /* UberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		126D315B2204E4860036F9A8 /* UberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberTests.swift; sourceTree = "<group>"; };
-		126D315D2204E4860036F9A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		126D31622204E4860036F9A8 /* UberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		126D31662204E4860036F9A8 /* UberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberUITests.swift; sourceTree = "<group>"; };
-		126D31682204E4860036F9A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				126D31452204E4810036F9A8 /* Uber */,
-				126D315A2204E4860036F9A8 /* UberTests */,
-				126D31652204E4860036F9A8 /* UberUITests */,
 				126D31442204E4810036F9A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,24 +97,6 @@
 				126D31522204E4860036F9A8 /* Info.plist */,
 			);
 			path = Uber;
-			sourceTree = "<group>";
-		};
-		126D315A2204E4860036F9A8 /* UberTests */ = {
-			isa = PBXGroup;
-			children = (
-				126D315B2204E4860036F9A8 /* UberTests.swift */,
-				126D315D2204E4860036F9A8 /* Info.plist */,
-			);
-			path = UberTests;
-			sourceTree = "<group>";
-		};
-		126D31652204E4860036F9A8 /* UberUITests */ = {
-			isa = PBXGroup;
-			children = (
-				126D31662204E4860036F9A8 /* UberUITests.swift */,
-				126D31682204E4860036F9A8 /* Info.plist */,
-			);
-			path = UberUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +239,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				126D315C2204E4860036F9A8 /* UberTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +246,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				126D31672204E4860036F9A8 /* UberUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

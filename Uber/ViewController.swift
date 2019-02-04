@@ -7,17 +7,15 @@
 //
 
 import UIKit
-import Firebase
+import Firebase 
 
 
 class ViewController: UIViewController {
 
     
+    @IBOutlet weak var emailTextfield: UITextField!
     
-    @IBAction func emailTextField(_ sender: UITextField) {
-    }
-    @IBAction func usernameTextField(_ sender: UITextField) {
-    }
+    @IBOutlet weak var passwordTextfield: UITextField!
     
     
     override func viewDidLoad() {
@@ -28,6 +26,17 @@ class ViewController: UIViewController {
 
     
     @IBAction func loginPressed(_ sender: UIButton) {
+        
+        Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
+            
+            if error != nil {
+                print(error)
+            } else {
+                self.performSegue(withIdentifier: "home", sender: self)
+                
+            }
+        }
+        
     }
     
     

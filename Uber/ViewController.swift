@@ -7,14 +7,32 @@
 //
 
 import UIKit
+import Firebase
+
 
 class ViewController: UIViewController {
 
+    
+    
+    @IBAction func emailTextField(_ sender: UITextField) {
+    }
+    @IBAction func usernameTextField(_ sender: UITextField) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
 
+    
+    @IBAction func loginPressed(_ sender: UIButton) {
+    }
+    
+    
+    
+    
+    
 }
 

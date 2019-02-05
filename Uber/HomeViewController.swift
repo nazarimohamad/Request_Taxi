@@ -7,31 +7,47 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    @IBAction func searchTextField(_ sender: UITextField) {
-    }
+    @IBOutlet weak var searchTextfield: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
+    let locationManager = CLLocationManager()
+    let mapView1 = MKMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        
     }
     
     
+//    MARK- Location Manager Delegate Method
+//    ****************************************************
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // didUpdateLoations
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[locations.count - 1]
+        
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        print(latitude)
     }
-    */
+    
+    
+    // didFaillWithError
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+     print(error)
+    }
+    
 
 }

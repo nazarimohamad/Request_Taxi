@@ -27,20 +27,31 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         
     }
     
+
     
 //    MARK- Location Manager Delegate Method
 //    ****************************************************
     
     // didUpdateLoations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[locations.count - 1]
+        let firstLocation = locations.first as! CLLocation
         
-        let latitude = location.coordinate.latitude
-        let longitude = location.coordinate.longitude
-        print(latitude)
+        let lat = firstLocation.coordinate.latitude
+        let lon = firstLocation.coordinate.longitude
+        
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        let regin = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        
+        self.mapView.setRegion(regin, animated: true)
+        
+        locationManager.stopUpdatingLocation()
+
+
     }
     
     

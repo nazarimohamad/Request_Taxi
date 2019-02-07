@@ -12,7 +12,7 @@ import MapKit
 
 
 
-class HomeViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var searchTextfield: UITextField!
     @IBOutlet weak var mapView: MKMapView!
@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     
     let locationManager = CLLocationManager()
     let mapView1 = MKMapView()
+    var resultSearchController : UISearchController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
+        
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable")
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable as? UISearchResultsUpdating
         
     }
     
@@ -45,7 +50,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, MKMapView
         let lon = firstLocation.coordinate.longitude
         
         let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        let regin = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        let regin = MKCoordinateRegion(center: center /*location.cordinate*/, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         
         self.mapView.setRegion(regin, animated: true)
         
@@ -61,4 +66,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, MKMapView
     }
     
 
+//    MARK- Search
+//    ********************************************************
+    
+
+    
 }

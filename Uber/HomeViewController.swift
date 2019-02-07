@@ -14,7 +14,6 @@ import MapKit
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var searchTextfield: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     
     
@@ -35,6 +34,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable as? UISearchResultsUpdating
         
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Where do you wanna go?"
+        navigationItem.titleView = resultSearchController?.searchBar
+        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        locationSearchTable.mapView = mapView
     }
     
 

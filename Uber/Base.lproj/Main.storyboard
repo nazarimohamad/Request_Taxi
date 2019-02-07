@@ -68,16 +68,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QYN-11-UXz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where do you wanna go? " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJ6-Py-FD9">
-                                <rect key="frame" x="48" y="139" width="278" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="searchTextField:" destination="hYZ-vP-4mA" eventType="editingDidEnd" id="NUw-qD-H6l"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -91,11 +81,9 @@
                     <navigationItem key="navigationItem" id="RJR-Of-pnN"/>
                     <connections>
                         <outlet property="mapView" destination="QYN-11-UXz" id="2vh-vZ-oPS"/>
-                        <outlet property="searchTextfield" destination="dJ6-Py-FD9" id="AP4-tC-BXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xc8-hY-SPI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="hYZ-vP-4mA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2300" y="149"/>
         </scene>

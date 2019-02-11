@@ -43,7 +43,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         
-        locationSearchTable.mapView = mapView
+        if let locationSearchTable = locationSearchTable as? LocationSearchTable {
+            locationSearchTable.mapView = mapView
+        }
     }
     
 

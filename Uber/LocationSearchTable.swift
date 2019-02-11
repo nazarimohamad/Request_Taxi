@@ -30,17 +30,30 @@ class LocationSearchTable: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         let selectedItem = matchingItem[indexPath.row].placemark
         cell.textLabel?.text = selectedItem.name
-        cell.detailTextLabel?.text = ""
+        cell.detailTextLabel?.text = parseAddress(selectedItem: selectedItem)
         return cell
     }
+
+//    MARK- Adding placemark address (street, state)
+     func parseAddress(selectedItem: MKPlacemark) -> String {
+        let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " ": ""
+//        comma between street and state
+        let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
+//        put space between "Washington" and "DC"
+        let secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? " ": ""
+        let addressLine = String(format: "%@%@%@%@%@%@%@", selectedItem.subThoroughfare ?? "", firstSpace, selectedItem.thoroughfare ?? "", comma, selectedItem.locality ?? "", secondSpace, selectedItem.administrativeArea ?? "")
+        
+        return addressLine
+    }
+
+
 
 }
 
 
-
+//MARK- Search function
 extension LocationSearchTable: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
         guard let mapView = mapView,
             let searchBarText = searchController.searchBar.text else { return}
         let request = MKLocalSearch.Request()

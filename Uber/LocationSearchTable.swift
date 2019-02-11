@@ -5,13 +5,17 @@
 //  Created by Ryan Nazari on 2/7/19.
 //  Copyright © 2019 Ryan Nazari. All rights reserved.
 //
-
+import UIKit
 import MapKit
+
+
+
 
 class LocationSearchTable: UITableViewController {
 
     var matchingItem: [MKMapItem] = []
     var mapView: MKMapView? = nil
+    var handleMapSearchDelegate: HandleMapSearch? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +50,12 @@ class LocationSearchTable: UITableViewController {
         return addressLine
     }
 
-
+//    MARK- Did select row function
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = matchingItem[indexPath.row].placemark
+        handleMapSearchDelegate?.dropPinZoomIn(placemark: selectedItem)
+        dismiss(animated: true, completion: nil)
+    }
 
 }
 
@@ -69,3 +78,4 @@ extension LocationSearchTable: UISearchResultsUpdating {
         }
     }
 }
+

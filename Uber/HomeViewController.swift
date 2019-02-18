@@ -99,15 +99,15 @@ extension HomeViewController: HandleMapSearch {
         selectedPin = placemark
         mapView.removeAnnotations(mapView.annotations)
         let annotation = MKPointAnnotation()
-        
+        annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
+        annotation.subtitle = placemark.locality
         if let city = placemark.locality,
             let state = placemark.administrativeArea {
             annotation.subtitle = "\(city) \(state)"
         }
-        annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let regin = MKCoordinateRegion(center: placemark.coordinate, span: span)
         mapView.setRegion(regin, animated: true)
     }
@@ -120,13 +120,13 @@ extension HomeViewController: MKMapViewDelegate {
             return nil
         }
         let reusedId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reusedId) as? MKPinAnnotationView
+        let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reusedId) as? MKPinAnnotationView
         pinView?.pinTintColor = UIColor.black
         pinView?.canShowCallout = true
         let smallSquare = CGSize(width: 30, height: 30)
         let button = UIButton(frame: CGRect(origin: CGPoint(x: 10, y: 10), size: smallSquare))
         button.backgroundColor = UIColor.black
-        button.addTarget(self, action: "getDirection", for: .touchUpInside)
+        button.addTarget(self, action: Selector(("getDirection")), for: .touchUpInside)
         pinView?.leftCalloutAccessoryView = button
         return pinView
     }

@@ -107,17 +107,41 @@
 			isa = PBXGroup;
 			children = (
 				126D31462204E4810036F9A8 /* AppDelegate.swift */,
-				126D31482204E4810036F9A8 /* ViewController.swift */,
-				129052A422085E1700693C4D /* HomeViewController.swift */,
-				12183B7E220C9321006CBC1B /* LocationSearchTable.swift */,
-				126D314A2204E4810036F9A8 /* Main.storyboard */,
-				129ADE2D221B0F80001630ED /* PriceViewController.swift */,
-				126D314D2204E4860036F9A8 /* Assets.xcassets */,
-				126D314F2204E4860036F9A8 /* LaunchScreen.storyboard */,
+				129ADE2F221B441A001630ED /* Controllers */,
+				129ADE30221B44A6001630ED /* View */,
+				129ADE31221B44C3001630ED /* Supporting files */,
 				126D31522204E4860036F9A8 /* Info.plist */,
 				129052A2220851F500693C4D /* GoogleService-Info.plist */,
 			);
 			path = Uber;
+			sourceTree = "<group>";
+		};
+		129ADE2F221B441A001630ED /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				126D31482204E4810036F9A8 /* ViewController.swift */,
+				129052A422085E1700693C4D /* HomeViewController.swift */,
+				12183B7E220C9321006CBC1B /* LocationSearchTable.swift */,
+				129ADE2D221B0F80001630ED /* PriceViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		129ADE30221B44A6001630ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				126D314A2204E4810036F9A8 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		129ADE31221B44C3001630ED /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				126D314D2204E4860036F9A8 /* Assets.xcassets */,
+				126D314F2204E4860036F9A8 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 		51492D72D1BF6B926929DFCB /* Pods */ = {

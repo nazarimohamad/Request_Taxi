@@ -11,7 +11,7 @@ import CoreLocation
 import MapKit
 
 
-protocol HandleMapSearch {
+protocol HandleMapSearch: class {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 
@@ -20,10 +20,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var selectedPin: MKPlacemark? = nil
-    let locationManager = CLLocationManager()
-    var resultSearchController : UISearchController? = nil
    
+    let locationManager = CLLocationManager()
+    
+    var selectedPin: MKPlacemark?
+    var resultSearchController : UISearchController!
    
     
     override func viewDidLoad() {
@@ -35,9 +36,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable")
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-        resultSearchController?.searchResultsUpdater = locationSearchTable as? UISearchResultsUpdating
+        resultSearchController?.searchResultsUpdater = locationSearchTable
         
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
@@ -48,31 +49,26 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         
-        if let locationSearchTable = locationSearchTable as? LocationSearchTable {
-            locationSearchTable.mapView = mapView
-            locationSearchTable.handleMapSearchDelegate = self
-        }
-        
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
         
     }
 //    MARK- Location Manager Delegate Method
 //    ****************************************************
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        if status == .authorizedWhenInUse {
+//    locationMAnager.requestLocation()
+//    }
     
     // didUpdateLoations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let firstLocation = locations.first as! CLLocation
         
+        guard let firstLocation = locations.first else { return }
         let lat = firstLocation.coordinate.latitude
         let lon = firstLocation.coordinate.longitude
-        
         let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         let regin = MKCoordinateRegion(center: center /*location.cordinate*/, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-        
-        self.mapView.setRegion(regin, animated: true)
-        
-        locationManager.stopUpdatingLocation()
-
-
+        mapView.setRegion(regin, animated: true)
     }
     // didFaillWithError
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -81,19 +77,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     
 //    MARK- Get direction function
-    func getDirection(){
-        if let selectedPin = selectedPin {
-            let mapItem = MKMapItem(placemark: selectedPin)
-            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-            mapItem.openInMaps(launchOptions: launchOptions)
-        }
+    @objc func getDirection(){
+        performSegue(withIdentifier: "price", sender: self)
+        
     }
-    
 }
 //      MARK- Map pin and button
 //      **********************************************
 
-//MARK- Handeling the map search pin
+//MARK- Handele map search
 extension HomeViewController: HandleMapSearch {
     func dropPinZoomIn(placemark: MKPlacemark) {
         selectedPin = placemark
@@ -116,17 +108,19 @@ extension HomeViewController: HandleMapSearch {
 //MARK- Handeling the button
 extension HomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
-        }
+        
+        guard !(annotation is MKUserLocation) else { return nil }
         let reusedId = "pin"
-        let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reusedId) as? MKPinAnnotationView
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reusedId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reusedId)
+        }
         pinView?.pinTintColor = UIColor.black
         pinView?.canShowCallout = true
         let smallSquare = CGSize(width: 30, height: 30)
-        let button = UIButton(frame: CGRect(origin: CGPoint(x: 10, y: 10), size: smallSquare))
-        button.backgroundColor = UIColor.black
-        button.addTarget(self, action: Selector(("getDirection")), for: .touchUpInside)
+        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
+        button.setBackgroundImage(UIImage(named: "car"), for: .normal)
+        button.addTarget(self, action: #selector(getDirection), for: .touchUpInside)
         pinView?.leftCalloutAccessoryView = button
         return pinView
     }

@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     @IBAction func loginPressed(_ sender: UIButton) {
         
-        SVProgressHUD.show()
+//        SVProgressHUD.show()
         Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
             
             if error != nil {
@@ -41,7 +41,6 @@ class ViewController: UIViewController {
         }
         
     }
-    
     
     
     

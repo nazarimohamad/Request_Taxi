@@ -8,14 +8,11 @@
 import UIKit
 import MapKit
 
-
-
-
 class LocationSearchTable: UITableViewController {
-
+    
+    weak var handleMapSearchDelegate: HandleMapSearch?
     var matchingItem: [MKMapItem] = []
     var mapView: MKMapView? = nil
-    var handleMapSearchDelegate: HandleMapSearch? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +28,7 @@ class LocationSearchTable: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let selectedItem = matchingItem[indexPath.row].placemark
         cell.textLabel?.text = selectedItem.name
         cell.detailTextLabel?.text = parseAddress(selectedItem: selectedItem)
@@ -69,7 +66,7 @@ extension LocationSearchTable: UISearchResultsUpdating {
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
         let search = MKLocalSearch(request: request)
-        search.start { (response, error) in
+        search.start { response, _ in
             guard let response = response else {
                 return
             }

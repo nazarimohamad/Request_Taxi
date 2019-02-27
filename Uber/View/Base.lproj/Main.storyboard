@@ -26,7 +26,6 @@
                                 <state key="normal" title="Log in"/>
                                 <connections>
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6mB-TU-bnf"/>
-                                    <segue destination="esh-Wt-3wP" kind="show" identifier="home" id="4If-sJ-m5L"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gn8-7T-gqV">
@@ -60,11 +59,12 @@
                     <connections>
                         <outlet property="emailTextfield" destination="Gn8-7T-gqV" id="gsq-Dy-LbH"/>
                         <outlet property="passwordTextfield" destination="JfX-eI-poH" id="36K-a5-0GI"/>
+                        <segue destination="esh-Wt-3wP" kind="show" identifier="home" id="Roy-c6-Qcs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2383" y="149"/>
+            <point key="canvasLocation" x="2433" y="-265"/>
         </scene>
         <!--Register-->
         <scene sceneID="xTc-xx-KWd">
@@ -91,7 +91,6 @@
                                 <connections>
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ODU-i5-c7N"/>
                                     <action selector="registerButtonPressed:" destination="3tB-fY-nas" eventType="touchUpInside" id="lfb-v5-mjM"/>
-                                    <segue destination="esh-Wt-3wP" kind="show" identifier="home" id="wAN-ow-1nX"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1l-eS-EoC">
@@ -109,11 +108,12 @@
                     <connections>
                         <outlet property="emailTextField" destination="TTY-gB-Uoc" id="ulJ-58-q95"/>
                         <outlet property="passwordTextField" destination="R1l-eS-EoC" id="rbN-Oq-rJD"/>
+                        <segue destination="esh-Wt-3wP" kind="show" identifier="home" id="mic-X1-XAv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="McC-as-Eol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1844.9275362318842" y="858.48214285714278"/>
+            <point key="canvasLocation" x="2432" y="595"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Nor-cq-cZv">
@@ -139,7 +139,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6yc-TC-n8Q"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RJR-Of-pnN"/>
+                    <navigationItem key="navigationItem" id="RJR-Of-pnN">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="3L8-kX-Uki">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="esh-Wt-3wP" id="ItG-Yr-rhA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="QYN-11-UXz" id="2vh-vZ-oPS"/>
                         <segue destination="Tib-HQ-T9v" kind="show" identifier="price" id="k8l-pO-w2a"/>
@@ -147,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xc8-hY-SPI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3208.6956521739135" y="148.66071428571428"/>
+            <point key="canvasLocation" x="3207" y="155"/>
         </scene>
         <!--Location Search Table-->
         <scene sceneID="mea-aW-KYN">
@@ -191,7 +198,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nuw-7F-ngS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868.115942028986" y="-199.55357142857142"/>
+            <point key="canvasLocation" x="4090" y="-192"/>
         </scene>
         <!--Price View Controller-->
         <scene sceneID="uDP-Eh-IdL">
@@ -233,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZP-Dx-mbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4305.7971014492759" y="450.66964285714283"/>
+            <point key="canvasLocation" x="4091" y="463"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PfW-LJ-du3">
@@ -255,6 +262,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4If-sJ-m5L"/>
+        <segue reference="mic-X1-XAv"/>
     </inferredMetricsTieBreakers>
 </document>

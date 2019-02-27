@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import Firebase
 
 
 protocol HandleMapSearch: class {
@@ -20,7 +21,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-   
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
+        } catch {
+            print("error to log out")
+        }
+    }
+    
     let locationManager = CLLocationManager()
     
     var selectedPin: MKPlacemark?
@@ -29,6 +38,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.hidesBackButton = true
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -53,13 +64,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         locationSearchTable.handleMapSearchDelegate = self
         
     }
-//    MARK- Location Manager Delegate Method
-//    ****************************************************
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        if status == .authorizedWhenInUse {
-//    locationMAnager.requestLocation()
-//    }
-    
+
     // didUpdateLoations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

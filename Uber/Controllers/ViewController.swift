@@ -27,16 +27,14 @@ class ViewController: UIViewController {
     
     @IBAction func loginPressed(_ sender: UIButton) {
         
-//        SVProgressHUD.show()
-        Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
-            
+        SVProgressHUD.show()
+        Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (result, error) in
             if error != nil {
-                print(error!)
-                print("error to login")
+                print("there is error to log in \(error)")
             } else {
                 SVProgressHUD.dismiss()
+                print("login success")
                 self.performSegue(withIdentifier: "home", sender: self)
-                
             }
         }
         

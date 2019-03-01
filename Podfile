@@ -9,7 +9,9 @@ target 'Uber' do
 
 pod 'Firebase'
 pod 'Firebase/Auth'
-pod 'SVProgressHUD' use_frameworks!
+pod 'lottie-ios'
+pod 'SVProgressHUD' 
+
 
 #  target 'UberTests' do
 #    inherit! :search_paths

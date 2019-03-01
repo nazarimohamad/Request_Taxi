@@ -7,23 +7,26 @@
 //
 
 import UIKit
+import Lottie
 
 class PriceViewController: UIViewController {
-
-
-    var imgArray = ["car1", "car2", "car3", "car4"]
-    let random1 = Int.random(in: 0...3)
-    let random2 = Int.random(in: 1...5)
     
-    @IBOutlet weak var carImg: UIImageView!
+    let random = Int.random(in: 0...3)
+    
+    @IBOutlet private var animationView: LOTAnimationView!
     @IBOutlet weak var priceTextField: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        carImg.image = UIImage(named: imgArray[random1])
-        priceTextField.text = "Driver is comming, You should pay $\(random2*2)"
+        startAnimation()
+        priceTextField.text = "Driver is comming, You should pay $\(random)"
+    }
+    
+    func startAnimation() {
+        animationView.setAnimation(named: "3870-taxi")
+        animationView.loopAnimation = true
+        animationView.play()
     }
 
 }

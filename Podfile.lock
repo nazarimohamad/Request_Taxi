@@ -55,6 +55,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - lottie-ios (2.5.2)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -65,6 +66,7 @@ PODS:
 DEPENDENCIES:
   - Firebase
   - Firebase/Auth
+  - lottie-ios
   - SVProgressHUD
 
 SPEC REPOS:
@@ -78,6 +80,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
+    - lottie-ios
     - nanopb
     - SVProgressHUD
 
@@ -91,9 +94,10 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: e74373354991ae5afea2d707add4b2ac3ba5c4f8
+PODFILE CHECKSUM: dc24e8b38b5a75d68e306fdc1ef75d0817b5e43b
 
 COCOAPODS: 1.5.3

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120D3D402229CC930093ABAE /* 3870-taxi.json in Resources */ = {isa = PBXBuildFile; fileRef = 120D3D3F2229CC930093ABAE /* 3870-taxi.json */; };
 		12183B7F220C9321006CBC1B /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12183B7E220C9321006CBC1B /* LocationSearchTable.swift */; };
 		122486C92226EA7100195FC9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122486C82226EA7100195FC9 /* RegisterViewController.swift */; };
 		126D31472204E4810036F9A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126D31462204E4810036F9A8 /* AppDelegate.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		06D182CF0373D568CC7641F3 /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
+		120D3D3F2229CC930093ABAE /* 3870-taxi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3870-taxi.json"; sourceTree = "<group>"; };
 		12183B7E220C9321006CBC1B /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		122486C82226EA7100195FC9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		126D31432204E4810036F9A8 /* Uber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uber.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,7 @@
 		126D31452204E4810036F9A8 /* Uber */ = {
 			isa = PBXGroup;
 			children = (
+				120D3D3F2229CC930093ABAE /* 3870-taxi.json */,
 				126D31462204E4810036F9A8 /* AppDelegate.swift */,
 				129ADE2F221B441A001630ED /* Controllers */,
 				129ADE30221B44A6001630ED /* View */,
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				126D31512204E4860036F9A8 /* LaunchScreen.storyboard in Resources */,
+				120D3D402229CC930093ABAE /* 3870-taxi.json in Resources */,
 				129052A3220851F500693C4D /* GoogleService-Info.plist in Resources */,
 				126D314E2204E4860036F9A8 /* Assets.xcassets in Resources */,
 				126D314C2204E4810036F9A8 /* Main.storyboard in Resources */,
@@ -308,6 +312,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -317,6 +322,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

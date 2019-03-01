@@ -20,12 +20,13 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
          super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
     }
     
 
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
-//        SVProgressHUD.show()
+        SVProgressHUD.show()
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if error != nil {
                 print("there is a problem to register \(error)")

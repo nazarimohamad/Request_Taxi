@@ -16,13 +16,14 @@ class PriceViewController: UIViewController {
     let random2 = Int.random(in: 1...5)
     
     @IBOutlet weak var carImg: UIImageView!
-    @IBOutlet weak var pticeTextfield: UILabel!
+    @IBOutlet weak var priceTextField: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         carImg.image = UIImage(named: imgArray[random1])
-        pticeTextfield.text = "Driver is comming, You should pay $\(random2*2)"
+        priceTextField.text = "Driver is comming, You should pay $\(random2*2)"
     }
 
 }

@@ -31,11 +31,13 @@ class ViewController: UIViewController {
         SVProgressHUD.show()
         Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (result, error) in
             if error != nil {
-                print("there is error to log in \(error)")
+                print("ther is error to sign in \(LocalizedError.self)")
             } else {
                 SVProgressHUD.dismiss()
                 print("login success")
                 self.performSegue(withIdentifier: "home", sender: self)
+                self.emailTextfield.text = nil
+                self.passwordTextfield.text = nil
             }
         }
         

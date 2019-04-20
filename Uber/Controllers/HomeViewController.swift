@@ -44,7 +44,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestAlwaysAuthorization()
+//        locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
@@ -72,19 +72,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         let lat = firstLocation.coordinate.latitude
         let lon = firstLocation.coordinate.longitude
         let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        let regin = MKCoordinateRegion(center: center /*location.cordinate*/, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+        let regin = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001))
         mapView.setRegion(regin, animated: true)
     }
     // didFaillWithError
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
      print(error)
-    }
-    
-    
-//    MARK- Get direction function
-    @objc func getDirection(){
-        performSegue(withIdentifier: "price", sender: self)
-        
     }
 }
 //      MARK- Map pin and button
@@ -104,13 +97,13 @@ extension HomeViewController: HandleMapSearch {
             annotation.subtitle = "\(city) \(state)"
         }
         mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        let span = MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
         let regin = MKCoordinateRegion(center: placemark.coordinate, span: span)
         mapView.setRegion(regin, animated: true)
     }
 }
 
-//MARK- Handeling the button
+//MARK- Handeling the Request Taxi and get direction button
 extension HomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -125,8 +118,61 @@ extension HomeViewController: MKMapViewDelegate {
         let smallSquare = CGSize(width: 30, height: 30)
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
         button.setBackgroundImage(UIImage(named: "car"), for: .normal)
-        button.addTarget(self, action: #selector(getDirection), for: .touchUpInside)
+        button.addTarget(self, action: #selector(setupRequestButton), for: .touchUpInside)
         pinView?.leftCalloutAccessoryView = button
         return pinView
     }
+    
+    
+    @objc private func setupRequestButton() {
+        let requestTaxiButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setTitle("Request Taxi", for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+            button.setTitleColor(.white, for: .normal)
+            button.layer.cornerRadius = 8
+            button.backgroundColor = .black
+            button.addTarget(self, action: #selector(requestTaxi), for: .touchUpInside)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            return button
+        }()
+        let getDirectionButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setTitle("Get Direction", for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+            button.setTitleColor(.white, for: .normal)
+            button.layer.cornerRadius = 8
+            button.backgroundColor = UIColor(red: 19/255, green: 144/255, blue: 255/255, alpha: 1)
+            button.addTarget(self, action: #selector(getDirection), for: .touchUpInside)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            return button
+        }()
+        view.addSubview(requestTaxiButton)
+        let guaid = view.safeAreaLayoutGuide
+        requestTaxiButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        requestTaxiButton.bottomAnchor.constraint(equalTo: guaid.bottomAnchor, constant: 8).isActive = true
+        requestTaxiButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -10).isActive = true
+        requestTaxiButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        view.addSubview(getDirectionButton)
+        getDirectionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        getDirectionButton.bottomAnchor.constraint(equalTo: guaid.bottomAnchor, constant: 8).isActive = true
+        getDirectionButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 10).isActive = true
+        getDirectionButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+    }
+    
+    @objc func getDirection() {
+        if let selectedPin = selectedPin {
+            let mapItem = MKMapItem(placemark: selectedPin)
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }
+        
+    }
+    
+    @objc func requestTaxi(){
+        performSegue(withIdentifier: "price", sender: self)
+    }
+    
 }

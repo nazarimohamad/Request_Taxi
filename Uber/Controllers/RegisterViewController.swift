@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController {
         SVProgressHUD.show()
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             if error != nil {
-                print("there is a problem to register \(error)")
+                print("there is a problem to register \(LocalizedError.self)")
             } else {
                 SVProgressHUD.dismiss()
                 print("successfuly register")

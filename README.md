@@ -13,5 +13,6 @@ CoreAnimation to zoom in and out in mapview
 Alert notification for success or failure response
 
 #### Preview
-<img src="https://gfycat.com/QuickJaggedHuemul" />
+![uber](https://user-images.githubusercontent.com/41308726/56461754-8a7f9b00-63c0-11e9-87c3-5e4abccbd8ba.gif)
+
 

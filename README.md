@@ -14,4 +14,3 @@ Alert notification for success or failure response
 
 ###Preview 
 <img src=”https://gfycat.com/QuickJaggedHuemul” alt=”animated” />
-<a href="https://gfycat.com/QuickJaggedHuemul"><img src="https://gfycat.com/QuickJaggedHuemul" />/a>

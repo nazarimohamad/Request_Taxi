@@ -11,7 +11,7 @@ import Lottie
 
 class PriceViewController: UIViewController {
     
-    let random = Int.random(in: 0...3)
+    let random = Int.random(in: 0...5)
     
     @IBOutlet private var animationView: LOTAnimationView!
     @IBOutlet weak var priceTextField: UILabel!

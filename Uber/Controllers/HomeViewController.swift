@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBAction func logoutButtonPressed(_ sender: Any) {
+    @IBAction func logoutButton(_ sender: UIButton) {
         do{
             try Auth.auth().signOut()
             navigationController?.popToRootViewController(animated: true)
